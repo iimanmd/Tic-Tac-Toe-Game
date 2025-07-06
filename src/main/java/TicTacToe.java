@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    private Player player1;
+    Player player1;
     private Player player2;
-    private Player currentPlayer;
+    Player currentPlayer;
     public Board board;
 
     public TicTacToe() {
