@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +16,12 @@ public class BoardTest {
     }
 
     @Test
+    public void testPlaceMarker() {
+        board.place(1, 1, 'X');
+        assertFalse(board.isCellEmpty(1, 1));
+    }
+
+    @Test
     public void testPlaceAndIsCellEmpty_Negative() {
         board.place(0, 0, 'X');
         assertFalse(board.isCellEmpty(0, 0));
@@ -24,7 +29,6 @@ public class BoardTest {
 
     @Test
     public void testIsFull_Positive() {
-        // Fülle das Board komplett
         for(int i = 0; i < 3; i++) {
             for(int j=0; j < 3; j++) {
                 board.place(i, j, 'X');
