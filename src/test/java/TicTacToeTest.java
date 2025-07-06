@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TicTacToeTest {
     private TicTacToe game;
@@ -10,7 +9,23 @@ public class TicTacToeTest {
     @BeforeEach
     public void setup() {
         game = new TicTacToe();
-        game.start();  // Oder man initialisiert Spieler & Board manuell
+       
+    }
+
+    @Test
+    public void testWinningMove_Row() {
+        game.makeMove(0, 0); // X
+        game.switchCurrentPlayer();
+        game.makeMove(1, 0); // O
+        game.switchCurrentPlayer();
+        game.makeMove(0, 1); // X
+        game.switchCurrentPlayer();
+        game.makeMove(1, 1); // O
+        game.switchCurrentPlayer();
+        game.makeMove(0, 2); // X wins
+
+        assertTrue(game.hasWinner());
+        assertEquals('X', game.getCurrentPlayer().getMarker());
     }
 
     @Test

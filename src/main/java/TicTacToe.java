@@ -59,15 +59,23 @@ public class TicTacToe {
         scanner.close();
     }
 
+    public boolean makeMove(int row, int col) {
+        if (row < 0 || row > 2 || col < 0 || col > 2) return false;
+        if (!board.isCellEmpty(row, col)) return false;
+
+        board.place(row, col, currentPlayer.getMarker());
+        return true;
+    }
+
     public void switchCurrentPlayer() {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
     public boolean hasWinner() {
         char marker = currentPlayer.getMarker();
-        char[][] c = board.cells;  // Direkt zugriff, falls cells public oder Getter anpassen
+        char[][] c = board.getCells();  // besser Getter verwenden
 
-        // Reihen prüfen
+        // Zeilen prüfen
         for (int i = 0; i < 3; i++) {
             if (c[i][0] == marker && c[i][1] == marker && c[i][2] == marker) return true;
         }
@@ -96,4 +104,3 @@ public class TicTacToe {
         }
     }
 }
-
