@@ -23,7 +23,7 @@ jobs:
         run: mvn clean package
 
       - name: Upload JAR as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: tic-tac-toe-jar
           path: target/*.jar
